@@ -1,0 +1,30 @@
+version: "3.9"
+   
+services:
+  db:
+    container_name: node_api_db
+    build:
+      dockerfile: db.Dockerfile
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=example_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+  node_api:
+    container_name: node_api
+    depends_on:
+      - db
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development 
+      - PORT=3000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=example_db 
+      - DB_USER=postgres
+      - DATABASE_PASSWORD=1234
+      
+
