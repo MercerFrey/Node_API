@@ -18,7 +18,7 @@ const getFood = (req, res) => {
       throw error;
     }
     res.status(200).json({
-      status: 'sucess',
+      status: 'succcesssssssssssssss odul gelir mi odul odul',
       requestTime: req.requestTime,
       data: results.rows,
     });
